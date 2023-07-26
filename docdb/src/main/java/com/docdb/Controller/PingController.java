@@ -12,7 +12,7 @@ public class PingController {
 
     /**
      * ping web service to check if the service is up and running
-     * @return
+     * @return flag showing the status
      */
     @RequestMapping(value = "/ping", method = RequestMethod.GET)
     public boolean ping()  {
