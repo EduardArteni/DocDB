@@ -3,9 +3,11 @@ package com.docdb.DAO;
 import com.docdb.DataBaseConnection;
 import com.docdb.Entity.User;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import java.sql.*;
 
+@Service
 public class UserDAO {
 
     public User findUserById(long id) throws SQLException {

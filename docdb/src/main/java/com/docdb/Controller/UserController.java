@@ -13,6 +13,8 @@ public class UserController {
 
     @Autowired
     private UserDAO userDAO;
+//    @Autowired
+//    private UserDAO userDAO = new UserDAO();
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public User getCuUserById(@RequestParam(value = "id") int id) throws SQLException {
