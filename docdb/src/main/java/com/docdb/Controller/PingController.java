@@ -10,8 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class PingController {
 
 
+    /**
+     * ping web service to check if the service is up and running
+     * @return
+     */
     @RequestMapping(value = "/ping", method = RequestMethod.GET)
-    public boolean getCuUserById()  {
+    public boolean ping()  {
         return true;
     }
 
