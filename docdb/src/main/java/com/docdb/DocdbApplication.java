@@ -8,6 +8,7 @@ public class DocdbApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DocdbApplication.class, args);
+        
     }
 
 }
