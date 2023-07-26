@@ -1,28 +1,27 @@
 package com.docdb.Entity;
 
 public class User {
-    private int id;
+    private long id;
     private String username;
     private String password;
     private Status status;
     private AccountType accountType;
 
-    enum Status{
-        ONLINE,
-        OFFLINE,
+    public enum Status{
+        ACTIVE,
         DELETED,
         SUSPENDED
     }
-    enum AccountType{
+    public enum AccountType{
         DOCTOR,
         ASSISTANT,
         PATIENT
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
