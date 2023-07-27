@@ -7,17 +7,6 @@ public class User {
     private Status status;
     private AccountType accountType;
 
-    public enum Status{
-        ACTIVE,
-        DELETED,
-        SUSPENDED
-    }
-    public enum AccountType{
-        DOCTOR,
-        ASSISTANT,
-        PATIENT
-    }
-
     public Long getId() {
         return id;
     }

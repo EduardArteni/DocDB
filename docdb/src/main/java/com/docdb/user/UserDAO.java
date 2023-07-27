@@ -1,10 +1,7 @@
 package com.docdb.user;
 
 import com.docdb.DataBaseConnection;
-
-import com.docdb.user.User;
 import org.springframework.stereotype.Service;
-
 import java.sql.*;
 
 @Service
@@ -26,15 +23,15 @@ public class UserDAO {
             foundUser.setPassword(rs.getString("password"));
             String status = rs.getString("status");
             switch (status) {
-                case "ACTIVE" -> foundUser.setStatus(User.Status.ACTIVE);
-                case "DELETED" -> foundUser.setStatus(User.Status.DELETED);
-                case "SUSPENDED" -> foundUser.setStatus(User.Status.SUSPENDED);
+                case "ACTIVE" -> foundUser.setStatus(Status.ACTIVE);
+                case "DELETED" -> foundUser.setStatus(Status.DELETED);
+                case "SUSPENDED" -> foundUser.setStatus(Status.SUSPENDED);
             }
             String accountType = rs.getString("account_type");
             switch (accountType) {
-                case "DOCTOR" -> foundUser.setAccountType(User.AccountType.DOCTOR);
-                case "ASSISTANT" -> foundUser.setAccountType(User.AccountType.ASSISTANT);
-                case "PATIENT" -> foundUser.setAccountType(User.AccountType.PATIENT);
+                case "DOCTOR" -> foundUser.setAccountType(AccountType.DOCTOR);
+                case "ASSISTANT" -> foundUser.setAccountType(AccountType.ASSISTANT);
+                case "PATIENT" -> foundUser.setAccountType(AccountType.PATIENT);
             }
 
         }
