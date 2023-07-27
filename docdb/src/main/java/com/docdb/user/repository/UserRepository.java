@@ -15,7 +15,10 @@ public record UserRepository(IUserRepository repository) {
         return repository.save(user);
     }
 
+    //TODO handle user not found exception
     public Optional<User> findById(Long id) {
         return repository.findById(id);
     }
+
+    //TODO add login method
 }
