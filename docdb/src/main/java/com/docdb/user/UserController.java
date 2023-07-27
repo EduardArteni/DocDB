@@ -19,7 +19,8 @@ public class UserController {
         return userDAO.findUserById(id);
     }
 
-    @RequestMapping(value = "/createUser", method = RequestMethod.POST)
+
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
     public User signup(@RequestBody User user) throws SQLException {
         return userDAO.createUser(user);
     }
