@@ -1,8 +1,8 @@
-package com.docdb.DAO;
+package com.docdb.user;
 
 import com.docdb.DataBaseConnection;
-import com.docdb.Entity.User;
-import org.springframework.stereotype.Repository;
+
+import com.docdb.user.User;
 import org.springframework.stereotype.Service;
 
 import java.sql.*;

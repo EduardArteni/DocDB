@@ -1,4 +1,4 @@
-package com.docdb.Entity;
+package com.docdb.user;
 
 public class User {
     private long id;

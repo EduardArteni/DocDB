@@ -1,7 +1,7 @@
-package com.docdb.Controller;
+package com.docdb.user;
 
-import com.docdb.DAO.UserDAO;
-import com.docdb.Entity.User;
+import com.docdb.user.UserDAO;
+import com.docdb.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
