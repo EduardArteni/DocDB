@@ -1,6 +1,9 @@
 package com.docdb.user;
 
 import com.docdb.DataBaseConnection;
+import com.docdb.user.domain.User;
+import com.docdb.user.dto.AccountType;
+import com.docdb.user.dto.Status;
 import org.springframework.stereotype.Service;
 import java.sql.*;
 

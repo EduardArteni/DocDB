@@ -1,5 +1,7 @@
-package com.docdb.user;
+package com.docdb.user.domain;
 
+import com.docdb.user.dto.AccountType;
+import com.docdb.user.dto.Status;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +15,7 @@ import lombok.Setter;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue
+    @GeneratedValue()
     private Long id;
     private String username;
     private String password;

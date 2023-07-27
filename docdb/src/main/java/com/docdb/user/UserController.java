@@ -1,7 +1,6 @@
 package com.docdb.user;
 
-import com.docdb.user.UserDAO;
-import com.docdb.user.User;
+import com.docdb.user.domain.User;
 import com.docdb.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,10 +22,9 @@ public class UserController {
     }
 
 
-
     @RequestMapping(value = "/user", method = RequestMethod.POST)
-    public User signup(@RequestBody User user) throws SQLException {
-        return userDAO.createUser(user);
+    public User signup(@RequestBody User user) {
+        return repository.insert(user);
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.DELETE)

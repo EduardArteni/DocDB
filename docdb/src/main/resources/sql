@@ -1,4 +1,13 @@
-CREATE SEQUENCE users_seq START 2;
+DROP SEQUENCE IF EXISTS public.users_seq;
+
+CREATE SEQUENCE IF NOT EXISTS public.users_seq
+    INCREMENT 50
+    START 1
+    MINVALUE 1
+    MAXVALUE 9223372036854775807
+    CACHE 1;
+
+DROP TABLE IF EXISTS public.users;
 
 CREATE TABLE IF NOT EXISTS public.users
 (
@@ -9,3 +18,5 @@ CREATE TABLE IF NOT EXISTS public.users
     account_type character varying COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT users_pkey PRIMARY KEY (id)
 )
+
+TABLESPACE pg_default;

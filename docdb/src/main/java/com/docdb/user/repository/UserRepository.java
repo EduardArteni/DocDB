@@ -1,7 +1,7 @@
 package com.docdb.user.repository;
 
 
-import com.docdb.user.User;
+import com.docdb.user.domain.User;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
