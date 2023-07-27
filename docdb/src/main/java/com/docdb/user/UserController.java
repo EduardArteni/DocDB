@@ -13,32 +13,25 @@ public class UserController {
 
     @Autowired
     private UserDAO userDAO;
-//    @Autowired
-//    private UserDAO userDAO = new UserDAO();
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public User getCuUserById(@RequestParam(value = "id") int id) throws SQLException {
         return userDAO.findUserById(id);
     }
 
-    @RequestMapping(value = "/signup", method = RequestMethod.POST)
+    @RequestMapping(value = "/createUser", method = RequestMethod.POST)
     public User signup(@RequestBody User user) throws SQLException {
-        return UserDAO.createUser(user);
+        return userDAO.createUser(user);
     }
 
-    @RequestMapping(value = "/User", method = RequestMethod.POST)
-    public User createUser(@RequestBody User User) throws SQLException {
-        return UserDAO.createUser(User);
-    }
-
-    @RequestMapping(value = "/User", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/user", method = RequestMethod.DELETE)
     public void deleteUserById(@RequestParam(value = "id") int id) throws SQLException {
-        UserDAO.deleteUser(id);
+        userDAO.deleteUser(id);
     }
 
-    @RequestMapping(value = "/User", method = RequestMethod.PUT)
+    @RequestMapping(value = "/user", method = RequestMethod.PUT)
     public User updateUser(@RequestBody User user) throws SQLException {
-        return UserDAO.updateUser(user);
+        return userDAO.updateUser(user);
     }
 
 }

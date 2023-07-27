@@ -42,7 +42,7 @@ public class UserDAO {
 
     }
 
-    public static User createUser(User user) throws SQLException {
+    public User createUser(User user) throws SQLException {
 
         ResultSet generatedKeys = null;
 
@@ -65,7 +65,7 @@ public class UserDAO {
         return user;
     }
 
-    public static void deleteUser(long id) throws SQLException {
+    public void deleteUser(long id) throws SQLException {
 
         Connection connection = DataBaseConnection.getConnection();
         PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM public.users WHERE id = ?");
@@ -77,7 +77,7 @@ public class UserDAO {
         connection.close();
     }
 
-    public static User updateUser(User user) throws SQLException {
+    public User updateUser(User user) throws SQLException {
 
         ResultSet generatedKeys = null;
 
