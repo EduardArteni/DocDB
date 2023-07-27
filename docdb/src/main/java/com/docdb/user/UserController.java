@@ -2,6 +2,7 @@ package com.docdb.user;
 
 import com.docdb.user.UserDAO;
 import com.docdb.user.User;
+import com.docdb.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,11 +14,14 @@ public class UserController {
 
     @Autowired
     private UserDAO userDAO;
+    @Autowired
+    private UserRepository repository;
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
-    public User getCuUserById(@RequestParam(value = "id") int id) throws SQLException {
-        return userDAO.findUserById(id);
+    public User getUserById(@RequestParam(value = "id") Long id) throws Exception {
+        return repository.findById(id).orElseThrow(() -> new Exception());
     }
+
 
 
     @RequestMapping(value = "/user", method = RequestMethod.POST)
