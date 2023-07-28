@@ -16,6 +16,12 @@ public class UserController {
         return service.getUserById(id);
     }
 
+    @RequestMapping(value = "/userByEmail", method = RequestMethod.GET)
+    public User getUserByEmail(@RequestParam(value = "email") String email) {
+        return service.findByEmail(email);
+    }
+
+
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     public User signup(@RequestBody User user) {
         return service.createUser(user);

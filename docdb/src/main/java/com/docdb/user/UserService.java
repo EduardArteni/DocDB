@@ -28,6 +28,10 @@ public class UserService {
         return repository.insert(user);
     }
 
+    User findByEmail(String email){
+        return repository.repository().findByEmail(email);
+    }
+
     public User getUserById(Long id) {
         return repository.findById(id).orElseGet(() -> {
             log.warn("user not found for id {}", id);
