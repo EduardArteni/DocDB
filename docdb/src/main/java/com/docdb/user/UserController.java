@@ -20,7 +20,10 @@ public class UserController {
     public User getUserByEmail(@RequestParam(value = "email") String email) {
         return service.findByEmail(email);
     }
-
+    @RequestMapping(value = "/userByUsername", method = RequestMethod.GET)
+    public User findByUsername(@RequestParam(value = "username") String username) {
+        return service.findByUsername(username);
+    }
 
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     public User signup(@RequestBody User user) {

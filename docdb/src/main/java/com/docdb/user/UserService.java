@@ -1,14 +1,14 @@
 package com.docdb.user;
 
 import com.docdb.user.domain.User;
-import com.docdb.user.exception.InvalidEmailException;
 import com.docdb.user.exception.UserNotFoundException;
 import com.docdb.user.repository.UserRepository;
-import static com.docdb.user.validator.UserValidator.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import static com.docdb.user.validator.UserValidator.verifyEmail;
+import static com.docdb.user.validator.UserValidator.verifyPassword;
 
 
 @Slf4j
@@ -29,7 +29,10 @@ public class UserService {
     }
 
     User findByEmail(String email){
-        return repository.repository().findByEmail(email);
+        return repository.findByEmail(email);
+    }
+    User findByUsername(String username){
+        return repository.findByUsername(username);
     }
 
     public User getUserById(Long id) {
