@@ -37,5 +37,7 @@ public record UserRepository(IUserRepository repository) {
         return repository.findByUsername(username);
     }
 
-    //TODO add login method
+    public User login(String username, String password){
+        return repository.findByUsernameAndPassword(username, password);
+    }
 }

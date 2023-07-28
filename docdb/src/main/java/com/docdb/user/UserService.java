@@ -34,6 +34,9 @@ public class UserService {
     User findByUsername(String username){
         return repository.findByUsername(username);
     }
+    User login(String username, String password){
+        return repository.login(username, password);
+    }
 
     public User getUserById(Long id) {
         return repository.findById(id).orElseGet(() -> {

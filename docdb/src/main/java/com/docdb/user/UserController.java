@@ -24,6 +24,11 @@ public class UserController {
     public User findByUsername(@RequestParam(value = "username") String username) {
         return service.findByUsername(username);
     }
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public User login(@RequestParam(value = "username") String username,
+                      @RequestParam(value = "password") String password) {
+        return service.login(username, password);
+    }
 
     @RequestMapping(value = "/user", method = RequestMethod.POST)
     public User signup(@RequestBody User user) {
