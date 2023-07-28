@@ -15,6 +15,17 @@ public record UserRepository(IUserRepository repository) {
         return repository.save(user);
     }
 
+    public User update(User user) {
+        if (user.getId() == null) {
+            throw new IllegalArgumentException("Null id provided");
+        }
+        return repository.save(user);
+    }
+
+    public void delete(User user){
+        repository.delete(user);
+    }
+
     //TODO handle user not found exception
     public Optional<User> findById(Long id) {
         return repository.findById(id);
