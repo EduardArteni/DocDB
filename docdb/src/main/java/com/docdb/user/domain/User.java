@@ -17,7 +17,15 @@ public class User {
     public static final String RESOURCE_NAME = "user";
 
     @Id
-    @GeneratedValue()
+    @SequenceGenerator(
+            name = "users_id_seq",
+            sequenceName = "users_id_seq",
+            allocationSize = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "users_id_seq"
+    )
     private Long id;
     private String username;
     private String password;

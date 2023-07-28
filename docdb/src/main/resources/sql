@@ -1,17 +1,8 @@
 DROP TABLE IF EXISTS public.users;
 
-DROP SEQUENCE IF EXISTS public.users_seq;
-
-CREATE SEQUENCE IF NOT EXISTS public.users_seq
-    INCREMENT 50
-    START 1
-    MINVALUE 1
-    MAXVALUE 9223372036854775807
-    CACHE 1;
-
 CREATE TABLE IF NOT EXISTS public.users
 (
-    id integer NOT NULL DEFAULT nextval('users_seq'::regclass),
+    id serial NOT NULL ,
     username character varying COLLATE pg_catalog."default" NOT NULL,
     password character varying COLLATE pg_catalog."default" NOT NULL,
     status character varying COLLATE pg_catalog."default" NOT NULL,
