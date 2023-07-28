@@ -14,6 +14,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Table(name = "users")
 public class User {
+    public static final String RESOURCE_NAME = "user";
+
     @Id
     @GeneratedValue()
     private Long id;
