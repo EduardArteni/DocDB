@@ -22,8 +22,8 @@ public class UserService {
         verifyEmail(user.getEmail());
         verifyPassword(user.getPassword());
 
-        //unique email
-        //unique username
+        //TODO treat DB exceptions for unique email
+        //TODO treat DB exceptions for unique username
 
         return repository.insert(user);
     }
