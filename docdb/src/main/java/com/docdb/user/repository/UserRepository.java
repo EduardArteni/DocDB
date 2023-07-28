@@ -2,6 +2,7 @@ package com.docdb.user.repository;
 
 
 import com.docdb.user.domain.User;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -29,6 +30,12 @@ public record UserRepository(IUserRepository repository) {
     public Optional<User> findById(Long id) {
         return repository.findById(id);
     }
+
+//    @Query("SELECT u FROM users u WHERE u.email = 1")
+//    public Optional<User> findByEmail(String email){
+//        return null;
+//
+//    }
 
     //TODO add login method
 }

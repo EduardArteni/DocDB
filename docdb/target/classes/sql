@@ -1,22 +1,15 @@
 DROP TABLE IF EXISTS public.users;
 
-DROP SEQUENCE IF EXISTS public.users_seq;
-
-CREATE SEQUENCE IF NOT EXISTS public.users_seq
-    INCREMENT 50
-    START 1
-    MINVALUE 1
-    MAXVALUE 9223372036854775807
-    CACHE 1;
-
 CREATE TABLE IF NOT EXISTS public.users
 (
-    id integer NOT NULL DEFAULT nextval('users_seq'::regclass),
-    username character varying COLLATE pg_catalog."default" NOT NULL,
-    password character varying COLLATE pg_catalog."default" NOT NULL,
-    status character varying COLLATE pg_catalog."default" NOT NULL,
-    account_type character varying COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT users_pkey PRIMARY KEY (id)
+     id serial NOT NULL ,
+     email character varying NOT NULL UNIQUE,
+     username character varying NOT NULL UNIQUE,
+     password character varying NOT NULL,
+     status character varying NOT NULL,
+     account_type character varying NOT NULL,
+     PRIMARY KEY (id)
 );
 
-INSERT INTO public.users(username, password, status, account_type) VALUES ('test1', 'testpswd', 'ACTIVE', 'DOCTOR');
+
+INSERT INTO public.users(email, username, password, status, account_type) VALUES ('email@test.com','test1', 'testpswd', 'ACTIVE', 'DOCTOR');

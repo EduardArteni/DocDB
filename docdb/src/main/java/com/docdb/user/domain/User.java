@@ -27,6 +27,9 @@ public class User {
             generator = "users_id_seq"
     )
     private Long id;
+    @Column(unique = true)
+    private String email;
+    @Column(unique = true)
     private String username;
     private String password;
     @Enumerated(EnumType.STRING)
