@@ -21,9 +21,8 @@ public class UserService {
     public User createUser(User user) {
         verifyEmail(user.getEmail());
         verifyPassword(user.getPassword());
-
-        //TODO treat DB exceptions for unique email
-        //TODO treat DB exceptions for unique username
+        if(findByEmail(user.getEmail()) != null) throw new RuntimeException("Email already in use.");
+        if (findByUsername(user.getUsername()) != null) throw new RuntimeException("Username already in use.");
 
         return repository.insert(user);
     }
