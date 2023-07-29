@@ -2,8 +2,11 @@ package com.docdb.user.repository;
 
 
 import com.docdb.user.domain.User;
+import com.docdb.user.dto.AccountType;
+import com.docdb.user.dto.Status;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -39,5 +42,15 @@ public record UserRepository(IUserRepository repository) {
 
     public User login(String username, String password){
         return repository.findByUsernameAndPassword(username, password);
+    }
+
+    public List<User> findAllActivePatients(){
+        return repository.findByStatusAndAccountType(Status.ACTIVE, AccountType.PATIENT);
+    }
+    public List<User> findAllSuspendedPatients(){
+        return repository.findByStatusAndAccountType(Status.SUSPENDED, AccountType.PATIENT);
+    }
+    public List<User> findAllActiveDoctors(){
+        return repository.findByStatusAndAccountType(Status.ACTIVE, AccountType.DOCTOR);
     }
 }
