@@ -1,56 +1,20 @@
 package com.docdb.user.repository;
 
-
 import com.docdb.user.domain.User;
 import com.docdb.user.dto.AccountType;
 import com.docdb.user.dto.Status;
-import org.springframework.stereotype.Component;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
-@Component
-public record UserRepository(IUserRepository repository) {
-    public User insert(User user) {
-        if (user.getId() != null) {
-            throw new IllegalArgumentException("Id provided");
-        }
-        return repository.save(user);
-    }
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+    User findByEmail(String email);
 
-    public User update(User user) {
-        if (user.getId() == null) {
-            throw new IllegalArgumentException("Null id provided");
-        }
-        return repository.save(user);
-    }
+    User findByUsername(String username);
 
-    public void delete(User user) {
-        repository.delete(user);
-    }
+    User findByUsernameAndPassword(String username, String password);
 
-    public Optional<User> findById(Long id) {
-        return repository.findById(id);
-    }
-
-    public User findByEmail(String email){
-        return repository.findByEmail(email);
-    }
-    public User findByUsername(String username){
-        return repository.findByUsername(username);
-    }
-
-    public User login(String username, String password){
-        return repository.findByUsernameAndPassword(username, password);
-    }
-
-    public List<User> findAllActivePatients(){
-        return repository.findByStatusAndAccountType(Status.ACTIVE, AccountType.PATIENT);
-    }
-    public List<User> findAllSuspendedPatients(){
-        return repository.findByStatusAndAccountType(Status.SUSPENDED, AccountType.PATIENT);
-    }
-    public List<User> findAllActiveDoctors(){
-        return repository.findByStatusAndAccountType(Status.ACTIVE, AccountType.DOCTOR);
-    }
+    List<User> findByStatusAndAccountType(Status status, AccountType accountType);
 }

@@ -21,20 +21,22 @@ public class UserService {
     public User createUser(User user) {
         verifyEmail(user.getEmail());
         verifyPassword(user.getPassword());
-        if(findByEmail(user.getEmail()) != null) throw new RuntimeException("Email already in use.");
+        if (findByEmail(user.getEmail()) != null) throw new RuntimeException("Email already in use.");
         if (findByUsername(user.getUsername()) != null) throw new RuntimeException("Username already in use.");
 
-        return repository.insert(user);
+        return repository.save(user);
     }
 
-    User findByEmail(String email){
+    User findByEmail(String email) {
         return repository.findByEmail(email);
     }
-    User findByUsername(String username){
+
+    User findByUsername(String username) {
         return repository.findByUsername(username);
     }
-    User login(String username, String password){
-        return repository.login(username, password);
+
+    User login(String username, String password) {
+        return repository.findByUsernameAndPassword(username, password);
     }
 
     public User getUserById(Long id) {
@@ -50,7 +52,7 @@ public class UserService {
     }
 
     public User updateUser(User user) {
-        return repository.update(user);
+        return repository.save(user);
     }
 
 }
