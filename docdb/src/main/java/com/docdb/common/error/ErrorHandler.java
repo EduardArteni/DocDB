@@ -11,7 +11,7 @@ import static org.springframework.http.HttpStatus.*;
 @ControllerAdvice
 public class ErrorHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(RuntimeException.class)
+    @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<ErrorResponseDTO> handleUserNotFoundException(UserNotFoundException e) {
         ErrorResponseDTO body = new ErrorResponseDTO(NOT_FOUND.value(), e.getMessage());
         return ResponseEntity.status(NOT_FOUND).body(body);

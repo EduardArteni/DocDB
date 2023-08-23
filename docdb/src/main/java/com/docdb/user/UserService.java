@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import static com.docdb.common.validator.Validator.isEmailValid;
 import static com.docdb.user.validator.UserValidator.verifyEmail;
 import static com.docdb.user.validator.UserValidator.verifyPassword;
 
@@ -42,8 +43,10 @@ public class UserService {
         return repository.findByUsername(username).orElseThrow(() -> new UserNotFoundException("user not found for given username"));
     }
 
-    User login(String username, String password) {
-        return repository.findByUsernameAndPassword(username, password).orElseThrow(() -> new UserNotFoundException("username or password wrong"));
+    User login(String identifier, String password) {
+        if (isEmailValid(identifier))
+            return repository.findByEmailAndPassword(identifier, password).orElseThrow(() -> new UserNotFoundException("email or password wrong"));
+        return repository.findByUsernameAndPassword(identifier, password).orElseThrow(() -> new UserNotFoundException("username or password wrong"));
     }
 
     public User getUserById(Long id) {
